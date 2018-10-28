@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { State } from '../../store/reducers/index';
+import * as fromUsersActions from '../../store/actions/users.actions';
+import { UsersService } from '../../services/users.service';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +10,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
+  constructor(private userService: UsersService) {}
 
   ngOnInit() {
+    this.userService.loadUsers();
   }
-
 }
