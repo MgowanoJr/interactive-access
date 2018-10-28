@@ -10,6 +10,7 @@ import { environment } from '../../../environments/environment';
 import * as fromUser from '../reducers/user.reducer';
 import * as fromSystemInfo from '../reducers/system-info.reducer';
 import { RouterReducerState, routerReducer } from '@ngrx/router-store';
+import * as fromUsers from './users.reducer';
 
 export interface State {
   /**
@@ -26,12 +27,14 @@ export interface State {
    * Router state
    */
   route: RouterReducerState;
+  users: fromUsers.State;
 }
 
 export const reducers: ActionReducerMap<State> = {
   user: fromUser.reducer,
   systemInfo: fromSystemInfo.reducer,
-  route: routerReducer
+  route: routerReducer,
+  users: fromUsers.reducer
 };
 
 export const metaReducers: MetaReducer<State>[] = !environment.production
